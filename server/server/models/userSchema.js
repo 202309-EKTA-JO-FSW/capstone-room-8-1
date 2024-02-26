@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    userID: {
-        type: Number,
+    username: {
+        type: String,
         required: true,
         unique: true,
     },
@@ -27,11 +27,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ['admin', 'customer'],
-    },
-    username: {
-        type: String,
-        required: true,
-        unique: true,
+        default: 'customer',
     },
 });
 

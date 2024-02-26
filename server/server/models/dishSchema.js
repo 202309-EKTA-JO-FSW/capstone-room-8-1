@@ -1,11 +1,5 @@
 const mongoose = require('mongoose');
-const Restaurant = require('./restaurantSchema');
 const DishSchema = new mongoose.Schema({
-    dishID: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
     dishName: {
         type: String,
         required: true,
@@ -16,8 +10,9 @@ const DishSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
+        min: 0,
     },
-    images: {
+    image: {
         type: String,
     },
     category: {
@@ -25,7 +20,8 @@ const DishSchema = new mongoose.Schema({
         enum: ['cocktail', 'dish'],
     },
     restaurantID: {
-        type: [Restaurant.Schema],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant',
     },
 });
 
