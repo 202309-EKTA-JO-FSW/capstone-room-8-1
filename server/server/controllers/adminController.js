@@ -1,4 +1,5 @@
 const RestaurantSchema = require('../models/restaurantSchema');
+const Dish = require('../models/dishSchema')
 
 async function addNewRestaurant(req, res) {
     try {
@@ -36,4 +37,12 @@ const getRestaurant = async (_, res) => {
     }
 };
 
-module.exports = { addNewRestaurant, getRestaurant };
+const getDishe = async (req, res) => {
+    try {
+      const dishes = await Dish.find({})
+      res.json(dishes)
+    } catch (err) {
+      res.status(500).json({ message: err.message })
+    }
+  }
+module.exports = { addNewRestaurant, getRestaurant, getDishe };
