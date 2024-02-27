@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 const RestaurantSchema = new mongoose.Schema({
-    restaurantID: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
     name: { type: String, required: true, unique: true },
     address: {
         street: { type: String, required: true },

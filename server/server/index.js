@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const adminRouter = require('./routes/admin');
+const customerRouter = require('./routes/customer');
 
 require('dotenv').config();
 
@@ -23,6 +24,7 @@ app.listen(port, () => {
 
 // Routes
 app.use('/admin', adminRouter);
+app.use('/customer', customerRouter);
 
 app.get('/test', (req, res) => {
     res.json(

@@ -1,18 +1,22 @@
 const mongoose = require('mongoose');
-const User = require('./userSchema');
-const Restaurant = require('./restaurantSchema');
 
 const reviewSchema = new mongoose.Schema({
     userID: {
-        type: [User.Schema],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    orderId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order',
     },
     review: {
         type: String,
     },
     restaurantID: {
-        type: [Restaurant.Schema],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant',
     },
 });
 
-const review = mongoose.model('review', reviewSchema);
+const review = mongoose.model('Review', reviewSchema);
 module.exports = review;

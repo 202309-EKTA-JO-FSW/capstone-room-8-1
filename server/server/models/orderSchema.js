@@ -1,25 +1,39 @@
 const mongoose = require('mongoose');
-const User = require('./userSchema');
-const Restaurant = require('./restaurantSchema');
 
 const orderSchema = new mongoose.Schema({
-    orderID: {
-        type: Number,
-        unique: true,
-        required: true,
-    },
     userID: {
-        type: [User.Schema],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
     },
     restaurantID: {
-        type: [Restaurant.Schema],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant',
     },
+    items: [
+        {
+            dishID: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Dish',
+            },
+            quantity: {
+                type: Number,
+                required: true,
+                min: 0,
+            },
+            totalPrice: {
+                type: Number,
+                required: true,
+            },
+        },
+    ],
     totalBill: {
         type: Number,
         required: true,
+        min: 0,
     },
     orderTime: {
         type: Date,
+        default: Date.now,
     },
 });
 
