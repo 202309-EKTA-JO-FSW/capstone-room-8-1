@@ -35,6 +35,11 @@ const orderSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    customerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
 });
 
 const Order = mongoose.model('Order', orderSchema);
