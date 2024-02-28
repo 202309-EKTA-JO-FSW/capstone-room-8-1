@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const adminRouter = require('./routes/admin');
 const customerRouter = require('./routes/customer');
+const publicRouter = require('./routes/public');
+const cookieParser = require('cookie-parser');
 
 require('dotenv').config();
 
@@ -16,6 +18,7 @@ const port =
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
@@ -25,6 +28,7 @@ app.listen(port, () => {
 // Routes
 app.use('/admin', adminRouter);
 app.use('/customer', customerRouter);
+app.use('/', publicRouter);
 
 app.get('/test', (req, res) => {
     res.json(
