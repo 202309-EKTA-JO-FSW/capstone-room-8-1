@@ -39,7 +39,8 @@ const getRestaurant = async (_, res) => {
 
 const getDishe = async (req, res) => {
     try {
-      const dishes = await Dish.find({})
+        const restID = req.params.id
+      const dishes = await Dish.find({ restaurantID: restID })
       res.json(dishes)
     } catch (err) {
       res.status(500).json({ message: err.message })

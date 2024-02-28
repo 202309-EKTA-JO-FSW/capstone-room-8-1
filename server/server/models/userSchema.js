@@ -29,10 +29,6 @@ const userSchema = new mongoose.Schema({
         enum: ['admin', 'customer'],
         default: 'customer',
     },
-    orders: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Order',
-    }],
 });
 
 const User = mongoose.model('User', userSchema);
