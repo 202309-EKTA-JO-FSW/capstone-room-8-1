@@ -1,64 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const Dish = require('../models/dishSchema');
+const dishController = require('../controllers/dishController');
 
 // Create a new dish
-router.post('/', async (req, res, next) => {
-    try {
-        const dish = await Dish.create(req.body);
-        res.status(201).json(dish);
-    } catch (error) {
-        next(error); // Pass error to the error handling middleware
-    }
-});
+router.post('/', dishController.createDish);
 
 // Get all dishes
-router.get('/', async (req, res, next) => {
-    try {
-        const dishes = await Dish.find();
-        res.json(dishes);
-    } catch (error) {
-        next(error); // Pass error to the error handling middleware
-    }
-});
+router.get('/', dishController.getAllDishes);
 
 // Get a single dish by ID
-router.get('/:id', async (req, res, next) => {
-    try {
-        const dish = await Dish.findById(req.params.id);
-        if (!dish) {
-            return res.status(404).json({ error: 'Dish not found' });
-        }
-        res.json(dish);
-    } catch (error) {
-        next(error); // Pass error to the error handling middleware
-    }
-});
+router.get('/:id', dishController.getDishById);
 
 // Update a dish by ID
-router.put('/:id', async (req, res, next) => {
-    try {
-        const dish = await Dish.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!dish) {
-            return res.status(404).json({ error: 'Dish not found' });
-        }
-        res.json(dish);
-    } catch (error) {
-        next(error); // Pass error to the error handling middleware
-    }
-});
+router.put('/:id', dishController.updateDishById);
 
 // Delete a dish by ID
-router.delete('/:id', async (req, res, next) => {
-    try {
-        const dish = await Dish.findByIdAndDelete(req.params.id);
-        if (!dish) {
-            return res.status(404).json({ error: 'Dish not found' });
-        }
-        res.json({ message: 'Dish deleted successfully' });
-    } catch (error) {
-        next(error); // Pass error to the error handling middleware
-    }
-});
+router.delete('/:id', dishController.deleteDishById);
 
 module.exports = router;

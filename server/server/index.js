@@ -4,8 +4,7 @@ const adminRouter = require('./routes/admin');
 const customerRouter = require('./routes/customer');
 const publicRouter = require('./routes/public');
 const cookieParser = require('cookie-parser');
-const restaurantRouter = require('../server/routes/restuarantRoute');
-const dishRoutes = require('./routes/dishRoute');
+
 require('dotenv').config();
 
 const connectToMongo = require('./db/connection');
@@ -30,8 +29,7 @@ app.listen(port, () => {
 app.use('/admin', adminRouter);
 app.use('/customer', customerRouter);
 app.use('/', publicRouter);
-app.use('/restaurant', restaurantRouter);
-app.use('/dishes', dishRoutes);
+
 app.get('/test', (req, res) => {
     res.json(
         'Server connection to client works!!  Good Luck with your capstones :D'
