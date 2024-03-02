@@ -10,6 +10,7 @@ router.get('/getCustomers', customerController.getCustomers);
 router.get('/getCustomerById/:id', customerController.getCustomerById);
 router.get('/getOrdersById/:id', customerController.getOrdersById);
 router.get('/getOrderById/:id', customerController.getOrderById);
+
 // router.put("/admin/item/:id", adminController.updateItem);
 
 // router.delete("/admin/item/:id", adminController.deleteItem);
