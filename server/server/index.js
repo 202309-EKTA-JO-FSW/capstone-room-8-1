@@ -4,6 +4,8 @@ const adminRouter = require('./routes/admin');
 const customerRouter = require('./routes/customer');
 const publicRouter = require('./routes/public');
 const cookieParser = require('cookie-parser');
+const isAuthN = require('./middleware/isAuthenticated');
+const isAuthZ = require('./middleware/isAuthorized');
 
 require('dotenv').config();
 
@@ -26,11 +28,11 @@ app.listen(port, () => {
 });
 
 // Routes
-app.use('/admin', adminRouter);
-app.use('/customer', customerRouter);
+app.use('/admin', isAuthN, isAuthZ, adminRouter);
+app.use('/customer', isAuthN, customerRouter);
 app.use('/', publicRouter);
 
-app.get('/test', (req, res) => {
+app.get('/test', async (req, res) => {
     res.json(
         'Server connection to client works!!  Good Luck with your capstones :D'
     );
