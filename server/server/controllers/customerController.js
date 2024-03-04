@@ -254,6 +254,67 @@ const checkout = async (req, res) => {
     }
 };
 
+const getProfileById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({
+                message: 'User not found',
+            });
+        }
+
+        res.status(200).json({
+            message: 'User profile details',
+            user,
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: 'Error while getting user profile details',
+            error: err.message,
+        });
+    }
+};
+
+const updateProfileById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const updatedData = req.body;
+
+        // Assuming you want to update specific fields only (e.g., username, address, phone)
+        const allowedFields = ['username', 'address', 'phone'];
+        const updateFields = {};
+
+        allowedFields.forEach((field) => {
+            if (updatedData[field]) {
+                updateFields[field] = updatedData[field];
+            }
+        });
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { $set: updateFields },
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({
+                message: 'User not found',
+            });
+        }
+
+        res.status(200).json({
+            message: 'User profile updated successfully',
+            user: updatedUser,
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: 'Error while updating user profile',
+            error: err.message,
+        });
+    }
+};
 module.exports = {
     getCustomerById,
     getCustomers,
@@ -265,4 +326,6 @@ module.exports = {
     addToCart,
     deleteCart,
     checkout,
+    getProfileById,
+    updateProfileById
 };
