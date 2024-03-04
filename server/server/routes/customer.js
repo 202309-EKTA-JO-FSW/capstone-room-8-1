@@ -16,4 +16,8 @@ router.delete('/cart', customerController.deleteCart);
 
 router.post('/cart/checkout', customerController.checkout);
 
+router.get('/getRestaurant', customerController.getRestaurant);
+router.get('/profile/:id', customerController.getProfileById);
+router.put('/profile/:id', customerController.updateProfileById);
+
 module.exports = router;
