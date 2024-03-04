@@ -1,6 +1,7 @@
 const Dish = require('../models/dishSchema');
 const Restaurant = require('../models/restaurantSchema');
 const User = require('../models/userSchema');
+const Review = require('../models/reviewSchema');
 const bycrypt = require('bcrypt');
 
 const getRestaurants = async (_, res) => {
@@ -89,9 +90,31 @@ const signIn = async (req, res) => {
     }
 };
 
+const getReviewsByRestaurantId = async (req, res) => {
+    try {
+        const { restaurantId } = req.params;
+        const reviews = await Review.find({ restaurantID: restaurantId });
+        if (!reviews.length) {
+            return res
+                .status(404)
+                .json({ message: 'there is no reviews for this restaurant' });
+        }
+        res.status(200).json({
+            message: 'List of Reviews for Restaurant',
+            reviews,
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: 'Error while getting reviews for restaurant',
+            error: err.message,
+        });
+    }
+};
+
 module.exports = {
     getRestaurants,
     signUp,
     signIn,
     getDishes,
+    getReviewsByRestaurantId,
 };
