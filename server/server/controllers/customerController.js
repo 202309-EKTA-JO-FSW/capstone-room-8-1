@@ -4,41 +4,13 @@ const Review = require('../models/reviewSchema');
 const Cart = require('../models/cartSchema');
 const Dish = require('../models/dishSchema');
 
-const getCustomers = async (_, res) => {
+const getOrdersByCustomerId = async (req, res) => {
     try {
-        const customers = await User.find({ type: 'customer' });
-        res.status(200).json({
-            message: 'List of Customers',
-            customers,
-        });
-    } catch (err) {
-        res.status(500).json({
-            message: 'Error while getting customer list',
-            error: err.message,
-        });
-    }
-};
-
-const getCustomerById = async (req, res) => {
-    try {
-        const customerId = req.params.id;
-        const customer = await User.findById(customerId);
-        res.status(200).json({
-            message: 'Customer details',
-            customer,
-        });
-    } catch (err) {
-        res.status(500).json({
-            message: 'Error while getting customer details',
-            error: err.message,
-        });
-    }
-};
-
-const getOrdersById = async (req, res) => {
-    try {
-        const customerId = req.params.id;
-        const orders = await Order.find({ customerId });
+        const customerId = req.user._id;
+        const orders = await Order.find({ userID: customerId });
+        if (!orders.length) {
+            return res.status(404).json({ message: 'there are no orders' });
+        }
         res.status(200).json({
             message: 'List of Orders for Customer',
             orders,
@@ -51,30 +23,12 @@ const getOrdersById = async (req, res) => {
     }
 };
 
-const getOrderById = async (req, res) => {
-    try {
-        const orderId = req.params.id;
-        const order = await Order.findById(orderId);
-        res.status(200).json({
-            message: 'Order details',
-            order,
-        });
-    } catch (err) {
-        res.status(500).json({
-            message: 'Error while getting order details',
-            error: err.message,
-        });
-    }
-};
-
 const getReviewForOrder = async (req, res) => {
     try {
         const orderId = req.params.id;
-        const review = await Review.find({ orderId });
-        if (!review.length) {
-            return res
-                .status(404)
-                .json({ message: 'there is no order by this Id' });
+        const review = await Review.findOne({ orderId });
+        if (!review) {
+            return res.status(404).json({ message: 'there is no review' });
         }
         res.status(200).json({
             message: 'Order review',
@@ -91,14 +45,14 @@ const getReviewForOrder = async (req, res) => {
 const postReviewForOrder = async (req, res) => {
     try {
         const { review } = req.body;
-        const { orderId } = req.params;
-        const order = await Order.findById(orderId);
+        const { id } = req.params;
+        const order = await Order.findById(id);
         if (!order) {
             return res
                 .status(404)
                 .json({ message: 'There is no order by this Id' });
         }
-        const currentReview = await Review.find({ orderId });
+        const currentReview = await Review.findOne({ orderId: id });
         if (currentReview) {
             return res
                 .status(400)
@@ -108,7 +62,7 @@ const postReviewForOrder = async (req, res) => {
         const restaurantId = order.restaurantID;
         const newReview = await Review.create({
             userID: userId,
-            orderId,
+            orderId: id,
             review,
             restaurantID: restaurantId,
         });
@@ -156,7 +110,6 @@ const addToCart = async (req, res) => {
                 .json({ message: 'there is no dish by this Id' });
         }
         let cart = await Cart.findOne({ userID: id });
-        console.log(cart);
         if (!cart) {
             cart = await Cart.create({
                 userID: id,
@@ -174,6 +127,11 @@ const addToCart = async (req, res) => {
                 cart,
             });
         } else {
+            if (cart.restaurantID.toString() !== dish.restaurantID.toString()) {
+                return res
+                    .status(400)
+                    .json({ message: 'Dish item from different restaurant' });
+            }
             const existingItem = cart.items.find((item) => {
                 return item.dishID.toString() === dishId;
             });
@@ -256,7 +214,7 @@ const checkout = async (req, res) => {
 
 const getProfileById = async (req, res) => {
     try {
-        const userId = req.params.id;
+        const userId = req.user._id;
         const user = await User.findById(userId);
 
         if (!user) {
@@ -279,11 +237,17 @@ const getProfileById = async (req, res) => {
 
 const updateProfileById = async (req, res) => {
     try {
-        const userId = req.params.id;
+        const userId = req.user._id;
         const updatedData = req.body;
 
         // Assuming you want to update specific fields only (e.g., username, address, phone)
-        const allowedFields = ['username', 'address', 'phone'];
+        const allowedFields = [
+            'username',
+            'address',
+            'phone',
+            'email',
+            'password',
+        ];
         const updateFields = {};
 
         allowedFields.forEach((field) => {
@@ -292,11 +256,9 @@ const updateProfileById = async (req, res) => {
             }
         });
 
-        const updatedUser = await User.findByIdAndUpdate(
-            userId,
-            { $set: updateFields },
-            { new: true }
-        );
+        const updatedUser = await User.findByIdAndUpdate(userId, updateFields, {
+            new: true,
+        });
 
         if (!updatedUser) {
             return res.status(404).json({
@@ -316,10 +278,7 @@ const updateProfileById = async (req, res) => {
     }
 };
 module.exports = {
-    getCustomerById,
-    getCustomers,
-    getOrdersById,
-    getOrderById,
+    getOrdersByCustomerId,
     getReviewForOrder,
     postReviewForOrder,
     getCart,
@@ -327,5 +286,5 @@ module.exports = {
     deleteCart,
     checkout,
     getProfileById,
-    updateProfileById
+    updateProfileById,
 };

@@ -90,6 +90,16 @@ const signIn = async (req, res) => {
     }
 };
 
+const signOut = async (_, res) => {
+    try {
+        res.clearCookie('jwt');
+        res.status(200).json({ message: 'Signed out successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
 const getReviewsByRestaurantId = async (req, res) => {
     try {
         const { restaurantId } = req.params;
@@ -115,6 +125,7 @@ module.exports = {
     getRestaurants,
     signUp,
     signIn,
+    signOut,
     getDishes,
     getReviewsByRestaurantId,
 };
