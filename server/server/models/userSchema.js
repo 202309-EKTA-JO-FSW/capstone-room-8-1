@@ -44,6 +44,24 @@ userSchema.pre('save', async function (next) {
     }
 });
 
+userSchema.pre('findOneAndUpdate', async function (next) {
+    try {
+        const update = this.getUpdate();
+        if (update.password) {
+            const salt = await bcrypt.genSalt(10);
+            const passwordHash = await bcrypt.hash(update.password, salt);
+            this.setUpdate({
+                $set: {
+                    password: passwordHash,
+                },
+            });
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
+
 userSchema.methods.generateAuthToken = function () {
     return jwt.sign(
         { _id: this._id, type: this.type },
