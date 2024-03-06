@@ -17,7 +17,6 @@ const {
 const url = `${ATLAS_URL}`;
 
 const connectToMongo = () => {
-    console.log(url);
     mongoose.connect(url, { useNewUrlParser: true });
 
     const db = mongoose.connection;

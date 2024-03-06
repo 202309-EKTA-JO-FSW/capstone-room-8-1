@@ -22,6 +22,7 @@ const DishSchema = new mongoose.Schema({
     restaurantID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurant',
+        required: true,
     },
 });
 
