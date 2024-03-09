@@ -1,17 +1,16 @@
 const Restaurant = require('../models/restaurantSchema');
 
-// Create a new restaurant
-async function createRestaurant(req, res) {
+async function addNewRestaurant(req, res) {
     try {
-        const restaurant = await Restaurant.create(req.body);
-        res.status(201).json(restaurant);
+        const newRestaurant = await Restaurant.create(req.body);
+        res.status(201).json({
+            message: 'Restaurant added successfully',
+            restaurant: newRestaurant,
+        });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 }
-
-// Get all restaurants
-// restaurantController.js
 
 async function getAllRestaurants(req, res) {
     try {
@@ -22,9 +21,6 @@ async function getAllRestaurants(req, res) {
     }
 }
 
-
-
-// Get a single restaurant by ID
 async function getRestaurantById(req, res) {
     try {
         const restaurant = await Restaurant.findById(req.params.id);
@@ -37,7 +33,6 @@ async function getRestaurantById(req, res) {
     }
 }
 
-// Update a restaurant by ID
 async function updateRestaurantById(req, res) {
     try {
         const restaurant = await Restaurant.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -50,7 +45,6 @@ async function updateRestaurantById(req, res) {
     }
 }
 
-// Delete a restaurant by ID
 async function deleteRestaurantById(req, res) {
     try {
         const restaurant = await Restaurant.findByIdAndDelete(req.params.id);
@@ -63,10 +57,27 @@ async function deleteRestaurantById(req, res) {
     }
 }
 
+const getRestaurant = async (_, res) => {
+    try {
+        const lstRestaurant = await Restaurant.find({});
+        res.status(200).json({
+            message: 'List of Restaurant Results',
+            restaurant: lstRestaurant,
+        });
+    } catch (err) {
+        res.status(422).json({
+            message: 'Error while getting Restaurant list',
+            error: err.message,
+        });
+    }
+};
+
 module.exports = {
-    createRestaurant,
+    addNewRestaurant,
     getAllRestaurants,
     getRestaurantById,
     updateRestaurantById,
-    deleteRestaurantById
+    deleteRestaurantById,
+    getRestaurant,
+
 };

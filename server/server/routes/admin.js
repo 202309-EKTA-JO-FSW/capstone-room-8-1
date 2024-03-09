@@ -16,10 +16,6 @@ router.get('/dishes/:id', adminController.getDishById);
 router.put('/dishes/:id', adminController.updateDishById);
 router.delete('/dishes/:id', adminController.deleteDishById);
 
-
-
-
-
 router.get('/getCustomers', customerController.getCustomers);
 router.get('/getCustomerById/:id', customerController.getCustomerById);
 router.get('/getOrdersById/:id', customerController.getOrdersById);

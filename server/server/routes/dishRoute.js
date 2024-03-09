@@ -3,18 +3,18 @@ const router = express.Router();
 const dishController = require('../controllers/dishController');
 
 // Create a new dish
-router.post('/', dishController.createDish);
+router.post('/dishes', dishController.createDish);
 
 // Get all dishes
-router.get('/', dishController.getAllDishes);
+router.get('/dishes', dishController.getAllDishes);
 
 // Get a single dish by ID
-router.get('/:id', dishController.getDishById);
+router.get('/dishes/:id', dishController.getDishById);
 
 // Update a dish by ID
-router.put('/:id', dishController.updateDishById);
+router.put('/dishes/:id', dishController.updateDishById);
 
 // Delete a dish by ID
-router.delete('/:id', dishController.deleteDishById);
+router.delete('/dishes/:id', dishController.deleteDishById);
 
 module.exports = router;
