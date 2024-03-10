@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const RestaurantCard = ({ restaurant }) => {
     return (
-        <Link href={`/restaurants/${restaurant._id}`}>
+        <div href={`/restaurants/${restaurant._id}`}>
             <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer">
                 <Image
                     // src={restaurant.logoImage}
@@ -17,7 +17,7 @@ const RestaurantCard = ({ restaurant }) => {
                     {restaurant.name}
                 </h3>
             </div>
-        </Link>
+        </div>
     );
 };
 
