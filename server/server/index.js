@@ -17,7 +17,12 @@ const port =
         ? process.env.NODE_LOCAL_TEST_PORT
         : process.env.NODE_LOCAL_PORT;
 
-app.use(cors());
+const allowedOrigins = ['http://127.0.0.1:3000', 'http://localhost:3000'];
+const options = {
+    origin: allowedOrigins,
+    credentials: true, // Allow cookies
+};
+app.use(cors(options));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
