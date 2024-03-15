@@ -241,13 +241,7 @@ const updateProfileById = async (req, res) => {
         const updatedData = req.body;
 
         // Assuming you want to update specific fields only (e.g., username, address, phone)
-        const allowedFields = [
-            'username',
-            'address',
-            'phone',
-            'email',
-            'password',
-        ];
+        const allowedFields = ['username', 'address', 'phone', 'email'];
         const updateFields = {};
 
         allowedFields.forEach((field) => {
