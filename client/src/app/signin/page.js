@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
+import { FaUserCircle, FaLock, FaEyeSlash } from 'react-icons/fa';
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
@@ -38,87 +39,54 @@ const SignIn = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
-                <div>
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        Sign in to your account
-                    </h2>
-                </div>
-                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-                    <input type="hidden" name="remember" value="true" />
-                    <div className="rounded-md shadow-sm -space-y-px">
-                        <div>
-                            <label htmlFor="email-address" className="sr-only">
-                                Email address
-                            </label>
-                            <input
-                                id="email-address"
-                                name="email"
-                                type="email"
-                                autoComplete="email"
-                                required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                placeholder="Email address"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="password" className="sr-only">
-                                Password
-                            </label>
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                autoComplete="current-password"
-                                required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-                    </div>
-
-                    {error && (
-                        <div className="text-red-500 text-sm mt-2">{error}</div>
-                    )}
-
-                    <div>
-                        <button
-                            type="submit"
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                                <svg
-                                    className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
+        <div className="bg-customBackgroundColor flex flex-grow h-screen">
+            <div className="flex-col flex ml-auto mr-auto items-center w-full lg:w-2/3 md:w-3/5 h-full">
+                <h1 className="font-bold text-2xl my-10 text-white">Login</h1>
+                <form className="mt-2 flex flex-col lg:w-1/2 w-8/12" onSubmit={handleSubmit}>
+                    <div className="flex flex-wrap items-stretch w-full mb-4 relative h-15 bg-white items-center rounded mb-6 pr-10">
+                        <div className="flex -mr-px justify-center w-15 p-4">
+                            <span className="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600">
+                                <FaUserCircle />
                             </span>
-                            Sign in
-                        </button>
+                        </div>
+                        <input
+                            type="text"
+                            className="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 h-10 border-grey-light rounded rounded-l-none px-3 self-center relative font-roboto text-xl outline-none"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
+                    <div className="flex flex-wrap items-stretch w-full relative h-15 bg-white items-center rounded mb-4">
+                        <div className="flex -mr-px justify-center w-15 p-4">
+                            <span className="flex items-center leading-normal bg-white rounded rounded-r-none text-xl px-3 whitespace-no-wrap text-gray-600">
+                                <FaLock />
+                            </span>
+                        </div>
+                        <input
+                            type="password"
+                            className="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border-0 h-10 px-3 relative self-center font-roboto text-xl outline-none"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <div className="flex -mr-px">
+                            <span className="flex items-center leading-normal bg-white rounded rounded-l-none border-0 px-3 whitespace-no-wrap text-gray-600">
+                                <FaEyeSlash />
+                            </span>
+                        </div>
+                    </div>
+                    {error && (
+                        <div className="text-base text-white text-right font-roboto leading-normal hover:underline mb-6">{error}</div>
+                    )}
+                    <a href="#" className="text-base text-white text-right font-roboto leading-normal hover:underline mb-6">Forget Password ?</a>
+                    <button
+                        type="submit"
+                        className="bg-customOrange py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-20"
+                    >
+                        Login
+                    </button>
                 </form>
-
-                <div className="text-sm text-center text-black">
-                    Don&apos;t have an account?{' '}
-                    <Link href="/signup">
-                        <span className="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer">
-                            Sign up
-                        </span>
-                    </Link>
-                </div>
             </div>
         </div>
     );
