@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Jwt from 'jsonwebtoken';
 
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [user, setUser] = useState(null);
@@ -30,38 +31,41 @@ const Navbar = () => {
         setUser(null);
         router.push('/');
     };
+
     return (
         <nav className="bg-white shadow-lg">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <Link href="/">
-                            <span className="text-xl font-bold text-gray-800">
-                                Orderio
-                            </span>
+                        <img src="/images/Logo.jpeg" alt="Orderio Logo" className="h-16" />
                         </Link>
                     </div>
-                    <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-4">
+                    <div className="hidden md:flex flex-grow items-center justify-center">
+                        <div className="ml-4 flex items-baseline space-x-4">
                             <Link href="/restaurants">
-                                <span className="text-gray-500 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">
+                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium">
                                     Restaurants
                                 </span>
                             </Link>
                             <Link href="/about">
-                                <span className="text-gray-500 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">
+                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium">
                                     About
                                 </span>
                             </Link>
                             <Link href="/contact">
-                                <span className="text-gray-500 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">
+                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium">
                                     Contact
                                 </span>
                             </Link>
+                        </div>
+                    </div>
+                    <div className="hidden md:block">
+                        <div className="ml-4 flex items-center md:ml-6">
                             {user ? (
                                 <div className="relative">
                                     <button
-                                        className="text-gray-500 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium"
+                                        className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium"
                                         onClick={toggleMenu}
                                     >
                                         My Profile
@@ -93,12 +97,12 @@ const Navbar = () => {
                             ) : (
                                 <>
                                     <Link href="/signin">
-                                        <span className="text-gray-500 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">
+                                        <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium">
                                             Sign In
                                         </span>
                                     </Link>
                                     <Link href="/signup">
-                                        <span className="text-gray-500 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">
+                                        <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium">
                                             Sign Up
                                         </span>
                                     </Link>
@@ -110,14 +114,12 @@ const Navbar = () => {
                         <button
                             onClick={toggleMenu}
                             type="button"
-                            className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-customBackgroundColor hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             aria-expanded="false"
                         >
                             <span className="sr-only">Open main menu</span>
                             <svg
-                                className={`${
-                                    isOpen ? 'hidden' : 'block'
-                                } h-6 w-6`}
+                                className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`}
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -132,9 +134,7 @@ const Navbar = () => {
                                 />
                             </svg>
                             <svg
-                                className={`${
-                                    isOpen ? 'block' : 'hidden'
-                                } h-6 w-6`}
+                                className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`}
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -156,17 +156,17 @@ const Navbar = () => {
                 <div className="md:hidden">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <Link href="/restaurants">
-                            <span className="text-gray-500 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium">
+                            <span className="text-gray-500 hover:text-customBackgroundColor block px-3 py-2 rounded-md text-base font-medium">
                                 Restaurants
                             </span>
                         </Link>
                         <Link href="/about">
-                            <span className="text-gray-500 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium">
+                            <span className="text-gray-500 hover:text-customBackgroundColor block px-3 py-2 rounded-md text-base font-medium">
                                 About
                             </span>
                         </Link>
                         <Link href="/contact">
-                            <span className="text-gray-500 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium">
+                            <span className="text-gray-500 hover:text-customBackgroundColor block px-3 py-2 rounded-md text-base font-medium">
                                 Contact
                             </span>
                         </Link>
@@ -174,18 +174,18 @@ const Navbar = () => {
                             <>
                                 {user.type === 'admin' && (
                                     <Link href="/admin">
-                                        <span className="text-gray-500 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium">
+                                        <span className="text-gray-500 hover:text-customBackgroundColor block px-3 py-2 rounded-md text-base font-medium">
                                             Admin Dashboard
                                         </span>
                                     </Link>
                                 )}
                                 <Link href="/profile">
-                                    <span className="text-gray-500 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium">
+                                    <span className="text-gray-500 hover:text-customBackgroundColor block px-3 py-2 rounded-md text-base font-medium">
                                         Profile Settings
                                     </span>
                                 </Link>
                                 <button
-                                    className="text-gray-500 hover:text-gray-800 block w-full text-left px-3 py-2 rounded-md text-base font-medium"
+                                    className="text-gray-500 hover:text-customBackgroundColor block w-full text-left px-3 py-2 rounded-md text-base font-medium"
                                     onClick={handleLogout}
                                 >
                                     Sign out
@@ -194,12 +194,12 @@ const Navbar = () => {
                         ) : (
                             <>
                                 <Link href="/signin">
-                                    <span className="text-gray-500 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium">
+                                    <span className="text-gray-500 hover:text-customBackgroundColor block px-3 py-2 rounded-md text-base font-medium">
                                         Sign In
                                     </span>
                                 </Link>
                                 <Link href="/signup">
-                                    <span className="text-gray-500 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium">
+                                    <span className="text-gray-500 hover:text-customBackgroundColor block px-3 py-2 rounded-md text-base font-medium">
                                         Sign Up
                                     </span>
                                 </Link>
