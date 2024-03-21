@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Jwt from 'jsonwebtoken';
 
-
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [user, setUser] = useState(null);
@@ -38,23 +37,27 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <Link href="/">
-                        <img src="/images/Logo.jpeg" alt="Orderio Logo" className="h-16" />
+                            <img
+                                src="/images/Logo.jpeg"
+                                alt="Orderio Logo"
+                                className="h-16"
+                            />
                         </Link>
                     </div>
                     <div className="hidden md:flex flex-grow items-center justify-center">
-                        <div className="ml-4 flex items-baseline space-x-4">
+                        <div className="ml-4 flex items-baseline space-x-4 *:text-base">
                             <Link href="/restaurants">
-                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium">
+                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md font-medium">
                                     Restaurants
                                 </span>
                             </Link>
                             <Link href="/about">
-                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium">
+                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md font-medium">
                                     About
                                 </span>
                             </Link>
                             <Link href="/contact">
-                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium">
+                                <span className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md font-medium">
                                     Contact
                                 </span>
                             </Link>
@@ -65,15 +68,15 @@ const Navbar = () => {
                             {user ? (
                                 <div className="relative">
                                     <button
-                                        className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-sm font-medium"
+                                        className="text-gray-500 hover:text-customBackgroundColor px-3 py-2 rounded-md text-base font-medium"
                                         onClick={toggleMenu}
                                     >
                                         My Profile
                                     </button>
                                     {isOpen && (
-                                        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5">
+                                        <div className="absolute right-0 z-10 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5">
                                             {user.type === 'admin' && (
-                                                <Link href="/admin">
+                                                <Link href="/dashboard">
                                                     <span className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                                         Admin Dashboard
                                                     </span>
@@ -119,7 +122,9 @@ const Navbar = () => {
                         >
                             <span className="sr-only">Open main menu</span>
                             <svg
-                                className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`}
+                                className={`${
+                                    isOpen ? 'hidden' : 'block'
+                                } h-6 w-6`}
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -134,7 +139,9 @@ const Navbar = () => {
                                 />
                             </svg>
                             <svg
-                                className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`}
+                                className={`${
+                                    isOpen ? 'block' : 'hidden'
+                                } h-6 w-6`}
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -173,7 +180,7 @@ const Navbar = () => {
                         {user ? (
                             <>
                                 {user.type === 'admin' && (
-                                    <Link href="/admin">
+                                    <Link href="/dashboard">
                                         <span className="text-gray-500 hover:text-customBackgroundColor block px-3 py-2 rounded-md text-base font-medium">
                                             Admin Dashboard
                                         </span>

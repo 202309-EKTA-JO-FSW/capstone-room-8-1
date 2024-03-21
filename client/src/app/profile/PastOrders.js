@@ -34,7 +34,7 @@ export default function PastOrders({ ordersProps, postReviewOrder }) {
 
     return (
         <>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-12 mb-8">
+            <h2 className="text-3xl font-extrabold text-orange-600 mt-12 mb-8">
                 Past Orders
             </h2>
             {orders &&
@@ -44,7 +44,7 @@ export default function PastOrders({ ordersProps, postReviewOrder }) {
                         className="bg-white shadow overflow-hidden sm:rounded-lg mb-6"
                     >
                         <div className="px-4 py-5 sm:px-6">
-                            <h3 className="text-lg leading-6 font-medium text-gray-900">
+                            <h3 className="text-lg leading-6 font-medium text-orange-600">
                                 Order ID: {order._id}
                             </h3>
                             <p className="mt-1 max-w-2xl text-sm text-gray-500">
@@ -66,7 +66,7 @@ export default function PastOrders({ ordersProps, postReviewOrder }) {
                         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                             <button
                                 onClick={() => handleReviewOrder(order)}
-                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                             >
                                 Review Order
                             </button>
@@ -91,12 +91,12 @@ export default function PastOrders({ ordersProps, postReviewOrder }) {
                         <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <div className="flex justify-between items-center mb-4">
-                                    <h3 className="text-lg leading-6 font-medium text-gray-900">
+                                    <h3 className="text-lg leading-6 font-medium text-orange-600">
                                         Review Order
                                     </h3>
                                     <button
                                         type="button"
-                                        className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                                         onClick={() => setSelectedOrder(null)}
                                     >
                                         <span className="sr-only">Close</span>
@@ -130,7 +130,7 @@ export default function PastOrders({ ordersProps, postReviewOrder }) {
                                                 id="review"
                                                 name="review"
                                                 rows="3"
-                                                className="text-black shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
+                                                className="text-black shadow-sm focus:ring-orange-500 focus:border-orange-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
                                                 placeholder="Write your review here..."
                                                 value={review}
                                                 onChange={(e) =>
@@ -142,7 +142,7 @@ export default function PastOrders({ ordersProps, postReviewOrder }) {
                                     <div className="mt-5 sm:mt-6">
                                         <button
                                             type="submit"
-                                            className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                                            className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-orange-600 text-base font-medium text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 sm:text-sm"
                                         >
                                             Submit Review
                                         </button>
