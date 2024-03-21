@@ -2,21 +2,19 @@ import { cookies } from 'next/headers';
 import InfoTable from './InfoTable';
 import PastOrders from './PastOrders';
 
+const myIp = `192.168.1.4`;
 async function updateProfile(updatedUser) {
     'use server';
     try {
         const token = cookies().get('jwt');
-        const response = await fetch(
-            'http://192.168.1.3:3001/customer/profile',
-            {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Cookie: `jwt=${token.value}`,
-                },
-                body: JSON.stringify(updatedUser),
-            }
-        );
+        const response = await fetch(`http://${myIp}:3001/customer/profile`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Cookie: `jwt=${token.value}`,
+            },
+            body: JSON.stringify(updatedUser),
+        });
 
         if (!response.ok) {
             throw new Error('Failed to update profile');
@@ -35,7 +33,7 @@ const postReviewOrder = async (review, selectedOrder) => {
     'use server';
     const token = cookies().get('jwt');
     const response = await fetch(
-        `http://192.168.1.3:3001/customer/orders/${selectedOrder._id}/review`,
+        `http://${myIp}:3001/customer/orders/${selectedOrder._id}/review`,
         {
             method: 'POST',
             headers: {
@@ -53,14 +51,11 @@ const postReviewOrder = async (review, selectedOrder) => {
 const fetchUserData = async () => {
     try {
         const token = cookies().get('jwt');
-        const response = await fetch(
-            'http://192.168.1.3:3001/customer/profile',
-            {
-                headers: {
-                    Cookie: `jwt=${token.value}`,
-                },
-            }
-        );
+        const response = await fetch(`http://${myIp}:3001/customer/profile`, {
+            headers: {
+                Cookie: `jwt=${token.value}`,
+            },
+        });
 
         if (response.ok) {
             const data = await response.json();
@@ -77,14 +72,11 @@ const fetchUserData = async () => {
 const fetchOrders = async () => {
     try {
         const token = cookies().get('jwt');
-        const response = await fetch(
-            'http://192.168.1.3:3001/customer/orders',
-            {
-                headers: {
-                    Cookie: `jwt=${token.value}`,
-                },
-            }
-        );
+        const response = await fetch(`http://${myIp}:3001/customer/orders`, {
+            headers: {
+                Cookie: `jwt=${token.value}`,
+            },
+        });
 
         if (response.ok) {
             const data = await response.json();
