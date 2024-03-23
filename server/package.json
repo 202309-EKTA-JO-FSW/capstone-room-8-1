@@ -1,5 +1,5 @@
 {
-  "name": "Capstone-Server",
+  "name": "Capstone-server",
   "version": "1.0.0",
   "description": "Express server for capstone",
   "main": "index.js",
@@ -21,7 +21,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken": "9.0.2",
     "mongodb": "^4.1.2",
     "mongoose": "^6.0.7",
     "multer": "^1.4.5-lts.1"
@@ -41,3 +41,4 @@
     "supertest": "^6.1.6"
   }
 }
+
