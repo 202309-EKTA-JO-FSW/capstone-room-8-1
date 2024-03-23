@@ -14,7 +14,10 @@ module.exports = {
       },
       colors: {
         customOrange: '#f34d09',
-        customBackgroundColor: '#ec8659'
+        customBackgroundColor: '#ec8659',
+        hoverColor:'#f4bcb4',
+        RestaurantTabColor:'#e27246',
+        totalOrderColor:'#c95b2e'
       },
     },
   },

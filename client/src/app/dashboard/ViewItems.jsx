@@ -20,7 +20,7 @@ export default function ViewItems() {
               Price
             </th>
             <th className="w-1/4 px-6 py-4 text-left font-bold uppercase text-gray-600">
-              Action
+            
             </th>
           </tr>
         </thead>

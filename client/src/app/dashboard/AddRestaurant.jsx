@@ -12,19 +12,30 @@ export default function AddRestaurant({ setCreateOpen }) {
             name: formData.get('name'),
             address: {
                 city: formData.get('city'),
-                state: formData.get('state'),
+                street:formData.get('street')
             },
             phoneNumber: parseInt(formData.get('phoneNumber')),
-            acceptedPayment: formData.get('acceptedPayment').split(','),
-            category: [formData.get('category')],
+            logoImage:formData.get('logoImage')
         };
-        const { restaurant } = await createRestaurant(fields);
-        if (restaurant) {
-            setRestaurants([...restaurants, restaurant]);
-            setCreateOpen(false);
+        try {
+            const response = await createRestaurant(fields);
+            if (response && response.restaurant) {
+                const { restaurant } = response;
+                setRestaurants([...restaurants, restaurant]);
+                setCreateOpen(false);
+            } else {
+                // Handle the case where response or response.restaurant is undefined
+                console.error("Failed to create restaurant:", response);
+                // Optionally, show an error message to the user
+            }
+        } catch (error) {
+            console.error("Error creating restaurant:", error);
+            // Optionally, show an error message to the user
         }
     }
 
+
+    
     return (
         <div className="z-10 flex w-screen justify-center">
             <div className="relative max-h-full w-full max-w-md p-4">
@@ -78,30 +89,18 @@ export default function AddRestaurant({ setCreateOpen }) {
                             </div>
                             <div className="col-span-1">
                                 <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                                    State
+                                    Street
                                 </label>
                                 <input
                                     id="location"
                                     required
                                     type="text"
-                                    name="state"
+                                    name="street"
                                     className="block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900  dark:border-gray-500 dark:bg-gray-600 dark:placeholder-gray-400  "
                                     placeholder="Enter location here, example: 32,41"
                                 />
                             </div>
-                            <div className="col-span-2">
-                                <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                                    Accepted Payment
-                                </label>
-                                <input
-                                    id="acceptedPayment"
-                                    required
-                                    type="text"
-                                    name="acceptedPayment"
-                                    className="block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900  dark:border-gray-500 dark:bg-gray-600 dark:placeholder-gray-400  "
-                                    placeholder="Enter Payment Methods, example: paypal,cash"
-                                />
-                            </div>
+                           
                             <div className="col-span-2">
                                 <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                                     Photo

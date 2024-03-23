@@ -46,13 +46,13 @@ export default function RestaurantRow({ data }) {
                 <td className="flex gap-1 whitespace-nowrap border-b border-gray-200 px-6">
                     <button
                         onClick={handleViewItems}
-                        className="focus:shadow-outline-blue rounded-md bg-orange-500 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-orange-600 focus:outline-none active:bg-blue-600"
+                        className="focus:shadow-outline-blue rounded-md bg-customOrange px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-orange-600 focus:outline-none active:bg-blue-600"
                     >
                         View Items
                     </button>
                     <button
                         onClick={() => setEditOpen(!editOpen)}
-                        className="focus:shadow-outline-blue rounded-md bg-blue-600 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none active:bg-blue-600"
+                        className="focus:shadow-outline-blue rounded-md bg-RestaurantTabColor px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-totalOrderColor focus:outline-none active:bg-blue-600"
                     >
                         Edit
                     </button>

@@ -15,7 +15,7 @@ export default function EditRestaurant({
             name: formData.get('name'),
             address: {
                 city: formData.get('city'),
-                state: formData.get('state'),
+                street: formData.get('street'),
             },
             phoneNumber: formData.get('phoneNumber'),
         };
@@ -79,13 +79,13 @@ export default function EditRestaurant({
                         </div>
                         <div className="col-span-1 sm:col-span-1">
                             <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                                State
+                                Street
                             </label>
                             <input
                                 type="text"
-                                name="state"
+                                name="street"
                                 id="location"
-                                defaultValue={data.address.state}
+                                defaultValue={data.address.street}
                                 className="focus:ring-primary-600 focus:border-primary-600 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400"
                                 required=""
                             />
