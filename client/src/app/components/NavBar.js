@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Jwt from 'jsonwebtoken';
+import Image from 'next/image';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -37,8 +38,8 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <Link href="/">
-                            <img
-                                src="/images/Logo.jpeg"
+                            <image
+                                src="/image/Logo.jpeg"
                                 alt="Orderio Logo"
                                 className="h-16"
                             />
