@@ -5,11 +5,11 @@ export default function HeroSection() {
         <div>
             <div className="relative h-[calc(100vh-64px)] overflow-hidden text-white">
                 <div className="absolute inset-0">
-                    {/* <img
-                        src="hero.jpg"
+                     <img
+                        src="https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&w=600"
                         alt="Background Image"
                         className="h-full w-full object-cover object-center"
-                    /> */}
+                    />
                     <div className="absolute inset-0 bg-black opacity-50"></div>
                 </div>
 
@@ -22,7 +22,7 @@ export default function HeroSection() {
                     </p>
                     <Link
                         href="/restaurants"
-                        className="transform rounded-full bg-[#FD7014] px-6 py-2 text-lg font-semibold text-gray-900 transition duration-300 ease-in-out hover:scale-105 hover:bg-[#FD7014] hover:shadow-lg"
+                        className="transform rounded-full bg-customOrange px-6 py-2 text-lg font-semibold text-gray-900 transition duration-300 ease-in-out hover:scale-105 hover:bg-[#FD7014] hover:shadow-lg"
                     >
                         Order Now
                     </Link>

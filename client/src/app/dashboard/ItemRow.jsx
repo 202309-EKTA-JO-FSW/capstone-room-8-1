@@ -36,7 +36,7 @@ export default function ItemRow({ data }) {
                     <td className="whitespace-nowrap px-6 ">
                         <button
                             onClick={() => setEditOpen(!editOpen)}
-                            className="focus:shadow-outline-blue rounded-md bg-blue-600 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none active:bg-blue-600"
+                            className="focus:shadow-outline-blue rounded-md bg-RestaurantTabColor px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-totalOrderColor focus:outline-none active:bg-blue-600"
                         >
                             Edit
                         </button>

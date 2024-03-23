@@ -56,7 +56,7 @@ export default function ShoppingCart() {
                         <span className="font-bold">$20.00</span>
                     </div>
                     <div className="mt-6 flex justify-center">
-                        <button className="rounded  bg-[#FD7014] px-4 py-2 font-bold text-white">
+                        <button className="rounded  bg-customOrange px-4 py-2 font-bold text-white">
                             Checkout
                         </button>
                     </div>
