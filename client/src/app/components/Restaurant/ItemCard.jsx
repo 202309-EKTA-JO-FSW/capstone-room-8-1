@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import itemPlaceholder from './item-placeholder.jpg';
+import itemPlaceholder from './itemPlaceholder.jpeg';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 
 export default function ItemCard({ className, item }) {
@@ -26,7 +26,7 @@ export default function ItemCard({ className, item }) {
             </div>
             <aside className="ml-auto flex items-center justify-center gap-3">
                 ${item.price}
-                <button>
+                <button >
                     <IoIosAddCircleOutline
                         fill="white"
                         className="rounded-full bg-[green]"

@@ -53,7 +53,7 @@ export default function ShoppingCart() {
                     <hr className="my-4" />
                     <div className="flex items-center justify-between">
                         <span className="font-bold">Total:</span>
-                        <span className="font-bold">$20.00</span>
+                        <span className="font-bold">$39.00</span>
                     </div>
                     <div className="mt-6 flex justify-center">
                         <button className="rounded  bg-customOrange px-4 py-2 font-bold text-white">
