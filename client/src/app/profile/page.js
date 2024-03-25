@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import InfoTable from './InfoTable';
 import PastOrders from './PastOrders';
 
-const myIp = `192.168.1.4`;
+const myIp = `192.168.192.1`;
 async function updateProfile(updatedUser) {
     'use server';
     try {

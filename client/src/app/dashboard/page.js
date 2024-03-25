@@ -5,7 +5,7 @@ import Dashboard from './Dashboard';
 async function fetchRestaurants() {
     'use server';
 
-    const result = await fetch('http://192.168.1.4:3001/restaurants');
+    const result = await fetch('http://192.168.192.1:3001/restaurants');
     const data = await result.json();
     return data;
 }
@@ -14,7 +14,7 @@ async function fetchItems(restaurantID) {
     'use server';
 
     const result = await fetch(
-        `http://192.168.1.4:3001/restaurants/${restaurantID}/dishes`
+        `http://192.168.192.1:3001/restaurants/${restaurantID}/dishes`
     );
     const data = await result.json();
     return data.Dishes;
@@ -24,7 +24,7 @@ async function deleteRestaurant(restaurantID) {
     'use server';
 
     const result = await fetch(
-        `http://192.168.1.4:3001/admin/restaurant/${restaurantID}`,
+        `http://192.168.192.1:3001/admin/restaurant/${restaurantID}`,
         {
             method: 'DELETE',
             headers: {
@@ -39,7 +39,7 @@ async function deleteRestaurant(restaurantID) {
 async function deleteItem(itemId) {
     'use server';
 
-    const result = await fetch(`http://192.168.1.4:3001/admin/dish/${itemId}`, {
+    const result = await fetch(`http://192.168.192.1:3001/admin/dish/${itemId}`, {
         method: 'DELETE',
         headers: {
             Cookie: cookies().toString(),
@@ -53,7 +53,7 @@ async function updateRestaurant(updateFields, restaurantID) {
     'use server';
 
     const result = await fetch(
-        `http://192.168.1.4:3001/admin/restaurant/${restaurantID}`,
+        `http://192.168.192.1:3001/admin/restaurant/${restaurantID}`,
         {
             method: 'PUT',
             headers: {
@@ -71,7 +71,7 @@ async function updateRestaurant(updateFields, restaurantID) {
 async function updateItem(updateFields, itemId) {
     'use server';
 
-    const result = await fetch(`http://192.168.1.4:3001/admin/dish/${itemId}`, {
+    const result = await fetch(`http://192.168.192.1:3001/admin/dish/${itemId}`, {
         method: 'PUT',
         headers: {
             Cookie: cookies().toString(),
@@ -86,7 +86,7 @@ async function updateItem(updateFields, itemId) {
 async function createRestaurant(fields) {
     'use server';
 
-    const result = await fetch(`http://192.168.1.4:3001/admin/restaurant`, {
+    const result = await fetch(`http://192.168.192.1:3001/admin/restaurant`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ async function createRestaurant(fields) {
 async function createItem(fields) {
     'use server';
 
-    const result = await fetch(`http://192.168.1.4:3001/admin/dish`, {
+    const result = await fetch(`http://192.168.192.1:3001/admin/dish`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
