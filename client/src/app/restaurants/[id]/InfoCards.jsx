@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import background from './background.jpg';
-
+//import background from './background.jpg';
+import back from './back.jpg'
 export default function InfoCards({ info }) {
     return (
         <div className="relative overflow-hidden bg-cover bg-[50%] bg-no-repeat">
-            <Image alt="" src={background} className="-z-10" />
+            <Image alt="" src={back} className="-z-10" />
             <div className="absolute left-0 top-0 w-full overflow-hidden bg-fixed">
-                <h1 className="my-9 ml-7 w-3/5 font-boston text-sm text-black sm:my-20 sm:ml-10 sm:text-lg md:text-3xl md:leading-snug xl:text-[2.75rem] 2xl:text-[3.25rem]">
+                <h1 className="my-9 ml-7 w-3/5 font-boston text-sm text-white sm:my-20 sm:ml-10 sm:text-lg md:text-3xl md:leading-snug xl:text-[2.75rem] 2xl:text-[3.25rem]">
                     Welcome to <br />
                     {info.name}
                     <br />

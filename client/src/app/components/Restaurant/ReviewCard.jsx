@@ -7,11 +7,11 @@ export default function ReviewCard({ className, review }) {
         >
             <div className="flex items-center gap-3 text-xl capitalize">
                 <div className="flex size-10 items-center justify-center rounded-full bg-yellow-YUMFINITY text-xl text-white-YUMFINITY">
-                    B
+                  
                 </div>
-                <div className="max-w-14 truncate">Belal Musab</div>
+                <div className="max-w-14 truncate"></div>
                 <div className="ml-auto flex items-center gap-1 font-bold">
-                    3
+                   
                     <FaStar color="orange" />
                 </div>
             </div>
