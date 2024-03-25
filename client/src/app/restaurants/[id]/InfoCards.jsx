@@ -37,7 +37,7 @@ export default function InfoCards({ info }) {
                                         Location
                                     </div>
                                     <div className="text-xl font-bold">
-                                        Amman-Mecca St.
+                                       {info.address.city}, {info.address.street}
                                     </div>
                                 </div>
                             </div>

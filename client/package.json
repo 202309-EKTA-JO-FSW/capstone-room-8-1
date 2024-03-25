@@ -13,6 +13,10 @@
   "dependencies": {
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
+<<<<<<< HEAD
+=======
+    "multer": "^1.4.5-lts.1",
+>>>>>>> 05a869d356d0c72520252902be03b2318e2c322e
     "next": "^14.1.4",
     "react": "^18",
     "react-dom": "^18",

@@ -12,14 +12,14 @@ export default function ViewRestaurants() {
                     <thead>
                         <tr className="bg-gray-100">
                             <th className="w-1/4 px-6 py-4 text-left font-bold uppercase text-gray-600">
-                                Name
+                               Restaurant Name
                             </th>
 
                             <th className="w-1/4 px-6 py-4 text-left font-bold uppercase text-gray-600">
-                                Phone
+                               Restaurant Phone Number
                             </th>
                             <th className="w-1/4 px-6 py-4 text-left font-bold uppercase text-gray-600">
-                                Action
+                                
                             </th>
                         </tr>
                     </thead>

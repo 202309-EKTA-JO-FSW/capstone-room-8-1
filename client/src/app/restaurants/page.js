@@ -39,7 +39,7 @@ const RestaurantsPage = () => {
                     {filteredRestaurants.map((restaurant) => (
                         <Link
                             key={restaurant._id}
-                            href={`/restaurants/${restaurant._id}`}
+                            href={`/menu/${restaurant._id}`}
                         >
                             <RestaurantCard restaurant={restaurant} />
                         </Link>

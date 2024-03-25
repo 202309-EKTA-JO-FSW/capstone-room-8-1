@@ -51,7 +51,7 @@ export default function JoinTeam() {
                                 />
                                 <button
                                     type="submit"
-                                    className="mt-5 w-full whitespace-nowrap rounded-md bg-[#FD7014] px-6 py-4 text-lg text-white sm:mt-0 sm:w-auto"
+                                    className="mt-5 w-full whitespace-nowrap rounded-md bg-customOrange px-6 py-4 text-lg text-white sm:mt-0 sm:w-auto"
                                 >
                                     Send
                                 </button>

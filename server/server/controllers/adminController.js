@@ -84,11 +84,12 @@ const getOrdersByCustomerId = async (req, res) => {
 
 async function addNewRestaurant(req, res) {
     try {
-        const { name, address, phoneNumber, logoImage } = req.body;
+        const { name, address, phoneNumber, category, logoImage } = req.body;
         const newRestaurant = await Restaurant.create({
             name,
             address,
             phoneNumber,
+            category,
             logoImage,
         });
         res.status(201).json({
@@ -117,10 +118,10 @@ async function getRestaurantById(req, res) {
 
 async function updateRestaurantById(req, res) {
     try {
-        const { name, address, phoneNumber, logoImage } = req.body;
+        const { name, address, phoneNumber, category, logoImage } = req.body;
         const restaurant = await Restaurant.findByIdAndUpdate(
             req.params.id,
-            { name, address, phoneNumber, logoImage },
+            { name, address, phoneNumber, category, logoImage },
             { new: true, runValidators: true }
         );
         if (!restaurant) {

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -38,8 +39,8 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <Link href="/">
-                            <image
-                                src="/image/Logo.jpeg"
+                            <img
+                                src="https://i.ibb.co/MkB2C1Y/Whats-App-Image-2024-03-23-at-15-34-04-7446be83-copy.png"
                                 alt="Orderio Logo"
                                 className="h-16"
                             />

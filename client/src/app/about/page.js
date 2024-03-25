@@ -82,7 +82,7 @@ export default function AboutPage() {
                 <SectionWithImage
                     title="Our Vision at Orderio"
                     paragraph="Here at Orderio, it all started with a vision that sprouted in the minds of few college students. A group of enterprising students, united by their shared passion for technology and good food, set out to create more than just a meal delivery service. We envisioned a platform that would revolutionize the way people access their favorite foods, while also offering fellow students a flexible way to earn money during their college journey. Orderio was born from the belief that everyone deserves to savor delicious meals without the wait, and that's exactly what we deliver, one order at a time."
-                    imgSrcs={['/images/Orderio MOBILE APP.jpg']}
+                    imgSrcs={['https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg']}
                     imgAlt="Vision Image"
                     reverse={false}
                 />
@@ -92,8 +92,8 @@ export default function AboutPage() {
                     title="Four Years of Culinary Connections"
                     paragraph="Since laying our digital cornerstone four years ago, Orderio has grown from a simple idea into a flourishing community staple. We've been riding a wave of unrelenting growth, seeing our workforce expand and our partnerships with local restaurants strengthen. With each passing year, we reaffirm our commitment to the communities we serve, forging links that turn first-time users into lifelong fans. Orderio isn't just a business; it's an integral thread in the fabric of local dining, continuously woven over four years of dedicated service and innovation."
                     imgSrcs={[
-                        '/images/chef at a local restaurant.jpg',
-                        '/images/Table filled with food.jpg',
+                        'https://media.istockphoto.com/id/1446478827/photo/a-chef-is-cooking-in-his-restaurants-kitchen.jpg?b=1&s=612x612&w=0&k=20&c=ENiwiKPJOCT7PhV9BlHBmVoyiOeGX3zaCRgjiKara5Q=',
+                        'https://media.istockphoto.com/id/1081422898/photo/pan-fried-duck.jpg?b=1&s=612x612&w=0&k=20&c=E5YZ31t5xyOIaZ48S4U1sTnbVChrPo6YdRH1oJtRk8g=',
                     ]}
                     imgAlt="Connections Image"
                     reverse={true}
@@ -103,8 +103,8 @@ export default function AboutPage() {
                     title="Team Dynamics and Service Excellence"
                     paragraph="Teamwork is the heart of Orderio's operations. Our team is a mosaic of skill and enthusiasm, where every player, from our delivery heroes to our coordination maestros, contributes to the seamless tapestry of our service. We operate with the precision of a well-oiled machine and the warmth of a family dinner table, ensuring that our customer service doesn't just meet expectations—it sets new benchmarks. Around the clock, across all weather, Orderio stands ready. Because when you choose Orderio, you're not just ordering food; you're embracing an experience that's meticulously curated and lovingly delivered, right to your doorstep."
                     imgSrcs={[
-                        '/images/Deliveryguy.jpg',
-                        '/images/DeliveryOutfit.jpg',
+                        'https://images.pexels.com/photos/687824/pexels-photo-687824.jpeg?auto=compress&cs=tinysrgb&w=600',
+                        'https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=600',
                     ]}
                     imgAlt="Team Image"
                     reverse={false}
@@ -113,7 +113,7 @@ export default function AboutPage() {
                 <SectionWithImage
                     title="Beyond the Meal - A Mission Woven into Every Delivery"
                     paragraph="At Orderio, we’re more than a business; we're a team that values community and connection as much as we relish a good feast. Our core values—teamwork, community contribution, and the joy of delivering delectable delights to your door—are the ingredients we mix into the recipe of our operation. We cherish the moments we create with every delivery, knowing that with each dish, we're not just fueling bodies; we're feeding souls. Welcome to Orderio—where every bite is a journey, and every delivery is a promise fulfilled."
-                    imgSrcs={['/images/TeamWork.jpg']}
+                    imgSrcs={['https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg?auto=compress&cs=tinysrgb&w=600']}
                     imgAlt="Mission Image"
                     reverse={true}
                 />
